@@ -23,6 +23,13 @@ class User(db.Model, UserMixin):
     def check_password(self, password):
         return check_password_hash(self.password, password)
 
+    def to_dict(self):
+        return{
+            'id': self.id,
+            'username': self.username,
+            'email': self.email
+        }
+
 
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -35,5 +42,11 @@ class Post(db.Model):
         self.title = title
         self.body = body
         self.user_id = user_id
+    def dict2(self):
+        return{
+            'id': self.id,
+            'username': self.username,
+            'email': self.email
+        }
     
 
